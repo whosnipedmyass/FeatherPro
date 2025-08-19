@@ -1,14 +1,14 @@
 {
   "name": "Feather Pro Repository",
   "identifier": "kh.crysalis.feather-repo",
-  "iconURL": "https://github.com/whosnipedmyass/FeatherPro/blob/main/Feather/Resources/Assets.xcassets/AppIcon.appiconset/feather.png?raw=true",
+  "iconURL": "https://github.com/whosnipedmyass/FeatherPro/blob/main/Feather/Resources/Icons/Main/feather3x.png?raw=true",
   "website": "https://github.com/khcrysalis/Feather",
   "apps": [
     {
       "name": "Feather Pro",
       "bundleIdentifier": "thewonderofyou.Feather",
       "developerName": "︻デ═一",
-      "iconURL": "https://github.com/khcrysalis/Feather/blob/v1.x/iOS/Resources/Icons/Main/Mac@3x.png?raw=true",
+      "iconURL": "https://github.com/whosnipedmyass/FeatherPro/blob/main/Feather/Resources/Icons/Main/feather3x.png?raw=true",
       "localizedDescription": "Feather is a free on-device iOS application manager/installer built with UIKit for quality.",
       "subtitle": "On-device signing application",
       "tintColor": "848ef9",
