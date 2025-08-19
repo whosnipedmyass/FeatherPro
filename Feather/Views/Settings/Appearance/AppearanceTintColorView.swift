@@ -21,7 +21,7 @@ struct AppearanceTintColorView: View {
 		("Clock", 			"#FF9500"),
 		("Peculiar", 		"#4860e8"),
 		("Very Peculiar", 	"#5394F7"),
-		("Emily",			"#e18aab")
+		("︻デ═一",			"#A2E4B8")
 	]
 	
 	// MARK: Body
