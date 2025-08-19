@@ -1,7 +1,7 @@
 {
   "name": "Feather Pro Repository",
   "identifier": "kh.crysalis.feather-repo",
-  "iconURL": "https://github.com/whosnipedmyass/FeatherPro/blob/main/Feather/Resources/Assets.xcassets/AppIcon.appiconset/feather.png",
+  "iconURL": "https://github.com/whosnipedmyass/FeatherPro/blob/main/Feather/Resources/Assets.xcassets/AppIcon.appiconset/feather.png?raw=true",
   "website": "https://github.com/khcrysalis/Feather",
   "apps": [
     {
