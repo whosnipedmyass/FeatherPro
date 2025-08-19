@@ -1,11 +1,11 @@
 {
-  "name": "Feather Repository",
+  "name": "Feather Pro Repository",
   "identifier": "kh.crysalis.feather-repo",
   "iconURL": "https://github.com/khcrysalis/Feather/blob/v1.x/iOS/Resources/Icons/Main/Mac@3x.png?raw=true",
   "website": "https://github.com/khcrysalis/Feather",
   "apps": [
     {
-      "name": "Feather",
+      "name": "Feather Pro",
       "bundleIdentifier": "thewonderofyou.Feather",
       "developerName": "Samara",
       "iconURL": "https://github.com/khcrysalis/Feather/blob/v1.x/iOS/Resources/Icons/Main/Mac@3x.png?raw=true",
