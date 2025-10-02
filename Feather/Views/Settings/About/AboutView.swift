@@ -27,8 +27,8 @@ struct AboutView: View {
 	@State private var _donators: [CreditsModel] = []
 	@State var isLoading = true
 	
-	private let _creditsUrl = "https://raw.githubusercontent.com/khcrysalis/project-credits/refs/heads/main/feather/creditsv2.json"
-	private let _donatorsUrl = "https://raw.githubusercontent.com/khcrysalis/project-credits/refs/heads/main/sponsors/credits.json"
+	private let _creditsUrl = "https://raw.githubusercontent.com/whosnipedmyass/project-credits/refs/heads/main/feather/creditsv2.json"
+	private let _donatorsUrl = "https://raw.githubusercontent.com/whosnipedmyass/project-credits/refs/heads/main/sponsors/credits.json"
 	
 	// MARK: Body
 	var body: some View {
@@ -68,7 +68,7 @@ struct AboutView: View {
 					}.joined(separator: ", ")))
 					.transition(.slide)
 					
-					Text(.localized("💜 This couldn't of been done without my sponsors!"))
+					Text(.localized("🗿 This couldn't of been done without my sponsors!"))
 						.foregroundStyle(.secondary)
 						.padding(.vertical, 2)
 				}
