@@ -4,10 +4,13 @@
 [![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/khcrysalis/feather/total)](https://github.com/khcrysalis/feather/releases)
 [![GitHub License](https://img.shields.io/github/license/khcrysalis/feather?color=%23C96FAD)](https://github.com/khcrysalis/feather/blob/main/LICENSE)
 [![Sponsor Me](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/khcrysalis)
-
-<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="Images/Image-dark.png"><source media="(prefers-color-scheme: light)" srcset="Images/Image-light.png"><img alt="Pointercrate-pocket." src="Images/Image-light.png"></picture></p>
+[![Discord](https://img.shields.io/discord/1265361879992242196?style=flat&label=discord)](https://discord.gg/TYnUDJkG66)
 
 This app allows you to install and manage applications contained in a single app, using certificate pairs and various installation techniques to allow apps to install to your device. This is an entirely stock application and uses built-in features to be able to do this!
+
+| <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="Images/Image-dark.png"><source media="(prefers-color-scheme: light)" srcset="Images/Image-light.png"><img alt="Pointercrate-pocket." src="Images/Image-light.png"></picture></p> |
+|:-:|
+| Screenshot of Feather on iOS / iPadOS |
 
 ### Features
 
@@ -26,6 +29,13 @@ This app allows you to install and manage applications contained in a single app
 ## Download
 
 Visit [releases](https://github.com/khcrysalis/Feather/releases) and get the latest `.ipa`.
+
+<a href="https://celloserenity.github.io/altdirect/?url=https://raw.githubusercontent.com/khcrysalis/Feather/refs/heads/main/app-repo.json" target="_blank">
+   <img src="https://github.com/CelloSerenity/altdirect/blob/main/assets/png/AltSource_Blue.png?raw=true" alt="Add AltSource" width="200">
+</a>
+<a href="https://github.com/khcrysalis/Feather/releases/latest/download/Feather.ipa" target="_blank">
+   <img src="https://github.com/CelloSerenity/altdirect/blob/main/assets/png/Download_Blue.png?raw=true" alt="Download .ipa" width="200">
+</a>
 
 ## How does it work?
 
@@ -50,7 +60,7 @@ Since itms-services initiates the install automatically, we don't need to do any
 
 #### Install (Pairing)
 - Establish a heartbeat with a TCP provider (the app will need this for later).
-  - For it to be successful, we need a [pairing file](https://github.com/jkcoxson/idevice_pair) and a [VPN](https://apps.apple.com/us/app/stosvpn/id6744003051).
+  - For it to be successful, we need a [pairing file](https://github.com/jkcoxson/idevice_pair) and a [VPN](https://apps.apple.com/us/app/localdevvpn/id6755608044).
 - Once we have these and the connection was successfully established, we can move on to the installation part.
   - Before installing, we need to check for the connection to the socket that has been created, routed to `10.7.0.1`, if this succeeds we're ready.
 - When preparing for installation, we need to establish another connection but for `AFC` using the TCP provider.
