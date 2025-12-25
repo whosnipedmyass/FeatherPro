@@ -1,0 +1,66 @@
+name: Update app-repo.json
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Ensure required tools
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y jq curl
+
+      - name: Run update script
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          chmod +x update-repo.sh
+          ./update-repo.sh
+
+      - name: Prepare branch for commit (handle detached HEAD)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          echo "Current ref: $GITHUB_REF"
+          BRANCH_NAME="$(git rev-parse --abbrev-ref HEAD)"
+          echo "Current git branch: $BRANCH_NAME"
+
+          if [ "$BRANCH_NAME" = "HEAD" ]; then
+            NEW_BRANCH="update-app-repo-$(date +%s)"
+            git checkout -b "$NEW_BRANCH"
+            echo "Created branch $NEW_BRANCH from detached HEAD"
+            echo "BRANCH_TO_PUSH=$NEW_BRANCH" >> $GITHUB_ENV
+          else
+            echo "BRANCH_TO_PUSH=$BRANCH_NAME" >> $GITHUB_ENV
+          fi
+
+      - name: Commit & push changes
+        env:
+          BRANCH_TO_PUSH: ${{ env.BRANCH_TO_PUSH }}
+        run: |
+          git add app-repo.json || true
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+
+          git commit -m "Update app-repo.json from latest release"
+
+          if [ -n "${{ secrets.PERSONAL_ACCESS_TOKEN }}" ]; then
+            git push "https://${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}" "HEAD:${BRANCH_TO_PUSH}"
+          else
+            git push origin "HEAD:${BRANCH_TO_PUSH}"
+          fi
