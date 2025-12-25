@@ -28,13 +28,10 @@ This app allows you to install and manage applications contained in a single app
 
 ## Download
 
-Visit [releases](https://github.com/khcrysalis/Feather/releases) and get the latest `.ipa`.
+Visit [releases](https://github.com/whosnipedmyass/Feather/releases) and get the latest `.ipa`.
 
-<a href="https://celloserenity.github.io/altdirect/?url=https://raw.githubusercontent.com/khcrysalis/Feather/refs/heads/main/app-repo.json" target="_blank">
+<a href="https://celloserenity.github.io/altdirect/?url=https://raw.githubusercontent.com/whosnipedmyass/FeatherPro/refs/heads/main/app-repo.json" target="_blank">
    <img src="https://github.com/CelloSerenity/altdirect/blob/main/assets/png/AltSource_Blue.png?raw=true" alt="Add AltSource" width="200">
-</a>
-<a href="https://github.com/khcrysalis/Feather/releases/latest/download/Feather.ipa" target="_blank">
-   <img src="https://github.com/CelloSerenity/altdirect/blob/main/assets/png/Download_Blue.png?raw=true" alt="Download .ipa" width="200">
 </a>
 
 ## How does it work?
