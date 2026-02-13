@@ -13,17 +13,34 @@ import IDeviceSwift
 
 // MARK: - View
 struct SettingsView: View {
+	@AppStorage("feather.selectedCert") private var _storedSelectedCert: Int = 0
     @State private var _currentIcon: String? = UIApplication.shared.alternateIconName
+	
+	// MARK: Fetch
+	@FetchRequest(
+		entity: CertificatePair.entity(),
+		sortDescriptors: [NSSortDescriptor(keyPath: \CertificatePair.date, ascending: false)],
+		animation: .snappy
+	) private var _certificates: FetchedResults<CertificatePair>
+	
+	private var selectedCertificate: CertificatePair? {
+		guard
+			_storedSelectedCert >= 0,
+			_storedSelectedCert < _certificates.count
+		else {
+			return nil
+		}
+		return _certificates[_storedSelectedCert]
+	}
+
     
     private let _donationsUrl = "https://github.com/sponsors/khcrysalis"
     private let _githubUrl = "https://github.com/khcrysalis/Feather"
-	private let _discordServer = "https://discord.gg/TYnUDJkG66"
     
     // MARK: Body
     var body: some View {
         NBNavigationView(.localized("Settings")) {
             Form {
-			
                 
                 _feedback()
                 
@@ -36,10 +53,24 @@ struct SettingsView: View {
 					}
                 }
                 
-                NBSection(.localized("Features")) {
+                NBSection(.localized("Certificates")) {
+                    
+                    if let cert = selectedCertificate {
+                        CertificatesCellView(cert: cert)
+                    } else {
+                        Text(.localized("No Certificate"))
+                            .font(.footnote)
+                            .foregroundColor(.disabled())
+                    }
                     NavigationLink(destination: CertificatesView()) {
                         Label(.localized("Certificates"), systemImage: "checkmark.seal")
                     }
+                 
+                } footer: {
+                    Text(.localized("Add and manage certificates used for signing applications."))
+                }
+                
+                NBSection(.localized("Features")) {
                     NavigationLink(destination: ConfigurationView()) {
                         Label(.localized("Signing Options"), systemImage: "signature")
                     }
@@ -76,8 +107,7 @@ extension SettingsView {
                 Label {
                     Text(verbatim: .localized("About %@", arguments: Bundle.main.name))
                 } icon: {
-                    Image(uiImage: AppIconView.altImage(_currentIcon))
-                        .appIconStyle(size: 23)
+					FRAppIconView(size: 23)
                 }
             }
             
@@ -99,9 +129,6 @@ extension SettingsView {
             Button(.localized("GitHub Repository"), systemImage: "safari") {
                 UIApplication.open(_githubUrl)
             }
-			Button(.localized("Join Us on Discord"), systemImage: "safari") {
-				UIApplication.open(_discordServer)
-			}
         } footer: {
             Text(.localized("If any issues occur within the app please report it via the GitHub repository. When submitting an issue, make sure to submit detailed information."))
         }

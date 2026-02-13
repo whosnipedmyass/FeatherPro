@@ -15,6 +15,12 @@ struct AppearanceView: View {
 	@AppStorage("Feather.userInterfaceStyle")
 	private var _userIntefacerStyle: Int = UIUserInterfaceStyle.unspecified.rawValue
 	
+	@AppStorage("Feather.shouldTintIcons")
+	private var _shouldTintIcons: Bool = false
+	
+	@AppStorage("Feather.shouldChangeIconsBasedOffStyle")
+	private var _shouldChangeIconsBasedOffStyle: Bool = false
+	
 	@AppStorage("Feather.storeCellAppearance")
 	private var _storeCellAppearance: Int = 0
 	private let _storeCellAppearanceMethods: [(name: String, desc: String)] = [
@@ -22,8 +28,15 @@ struct AppearanceView: View {
 		(.localized("Big Description"), .localized("Adds the localized description of the app."))
 	]
 	
-	@AppStorage("com.apple.SwiftUI.IgnoreSolariumLinkedOnCheck")
-	private var _ignoreSolariumLinkedOnCheck: Bool = false
+	@AppStorage("Feather.userTintColor")
+	private var _selectedColorHex: String = "#848ef9"
+	
+	private var _tintColorBinding: Binding<Color> {
+		Binding(
+			get: { Color(hex: _selectedColorHex) },
+			set: { _selectedColorHex = $0.toHex() }
+		)
+	}
 	
 	// MARK: Body
     var body: some View {
@@ -43,6 +56,23 @@ struct AppearanceView: View {
 					.listRowBackground(EmptyView())
 			}
 			
+			Section {
+				ColorPicker(
+					.localized("Custom Theme Color"),
+					selection: _tintColorBinding,
+					supportsOpacity: false
+				)
+			}
+			
+			if #available(iOS 18.0, *) {
+				NBSection(.localized("Library")) {
+					Toggle(.localized("Dynamic Icons"), isOn: $_shouldChangeIconsBasedOffStyle)
+					if #available(iOS 18.2, *) {
+						Toggle(.localized("Tinted Icons"), isOn: $_shouldTintIcons)
+					}
+				}
+			}
+			
 			NBSection(.localized("Sources")) {
 				Picker(.localized("Store Cell Appearance"), selection: $_storeCellAppearance) {
 					ForEach(0..<_storeCellAppearanceMethods.count, id: \.self) { index in
@@ -58,22 +88,11 @@ struct AppearanceView: View {
 				.labelsHidden()
 				.pickerStyle(.inline)
 			}
-			
-			if #available(iOS 19.0, *) {
-				NBSection(.localized("Experiments")) {
-					Toggle(.localized("Enable Liquid Glass"), isOn: $_ignoreSolariumLinkedOnCheck)
-				} footer: {
-					Text(.localized("This enables liquid glass for this app, this requires a restart of the app to take effect."))
-				}
-			}
 		}
 		.onChange(of: _userIntefacerStyle) { value in
 			if let style = UIUserInterfaceStyle(rawValue: value) {
 				UIApplication.topViewController()?.view.window?.overrideUserInterfaceStyle = style
 			}
-		}
-		.onChange(of: _ignoreSolariumLinkedOnCheck) { _ in
-			UIApplication.shared.suspendAndReopen()
 		}
     }
 }
