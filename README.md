@@ -1,4 +1,4 @@
-# Feather
+# FeatherPro
 
 [![GitHub Release](https://img.shields.io/github/v/release/khcrysalis/feather?include_prereleases)](https://github.com/whosnipedmyass/FeatherPro/releases)
 [![GitHub License](https://img.shields.io/github/license/khcrysalis/feather?color=%23C96FAD)](https://github.com/whosnipedmyass/FeatherPro/blob/main/LICENSE)
