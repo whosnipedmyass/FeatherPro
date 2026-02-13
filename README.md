@@ -1,10 +1,8 @@
 # Feather
 
-[![GitHub Release](https://img.shields.io/github/v/release/khcrysalis/feather?include_prereleases)](https://github.com/khcrysalis/feather/releases)
-[![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/khcrysalis/feather/total)](https://github.com/khcrysalis/feather/releases)
-[![GitHub License](https://img.shields.io/github/license/khcrysalis/feather?color=%23C96FAD)](https://github.com/khcrysalis/feather/blob/main/LICENSE)
-[![Sponsor Me](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/khcrysalis)
-[![Discord](https://img.shields.io/discord/1265361879992242196?style=flat&label=discord)](https://discord.gg/TYnUDJkG66)
+[![GitHub Release](https://img.shields.io/github/v/release/khcrysalis/feather?include_prereleases)](https://github.com/whosnipedmyass/FeatherPro/releases)
+[![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/khcrysalis/feather/total)](https://github.com/whosnipedmyass/FeatherPro/releases)
+[![GitHub License](https://img.shields.io/github/license/khcrysalis/feather?color=%23C96FAD)](https://github.com/whosnipedmyass/FeatherPro/blob/main/LICENSE)
 
 This app allows you to install and manage applications contained in a single app, using certificate pairs and various installation techniques to allow apps to install to your device. This is an entirely stock application and uses built-in features to be able to do this!
 
@@ -26,35 +24,16 @@ This app allows you to install and manage applications contained in a single app
 
 ## Download
 
-Visit [releases](https://github.com/khcrysalis/Feather/releases) and get the latest `.ipa`.
+Visit [releases](https://github.com/whosnipedmyass/FeatherPro/releases) and get the latest `.ipa`.
 
-<a href="https://celloserenity.github.io/altdirect/?url=https://raw.githubusercontent.com/khcrysalis/Feather/refs/heads/main/app-repo.json" target="_blank">
+<a href="https://celloserenity.github.io/altdirect/?url=https://raw.githubusercontent.com/whosnipedmyass/FeatherPro/refs/heads/main/app-repo.json" target="_blank">
    <img src="https://github.com/CelloSerenity/altdirect/blob/main/assets/png/AltSource_Blue.png?raw=true" alt="Add AltSource" width="200">
-</a>
-<a href="https://github.com/khcrysalis/Feather/releases/latest/download/Feather.ipa" target="_blank">
-   <img src="https://github.com/CelloSerenity/altdirect/blob/main/assets/png/Download_Blue.png?raw=true" alt="Download .ipa" width="200">
 </a>
 
 ## How does it work?
 
 Visit the [HOW IT WORKS](./HOW_IT_WORKS.md) page.
 
-## Sponsors
-
-| Thanks to all my [sponsors](https://github.com/sponsors/khcrysalis)!! |
-|:-:|
-| <img src="https://raw.githubusercontent.com/khcrysalis/github-sponsor-graph/main/graph.png"> |
-| _**"samara is cute" - Vendicated**_ |
-
-## Star History
-
-<a href="https://star-history.com/#khcrysalis/feather&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=khcrysalis/feather&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=khcrysalis/feather&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=khcrysalis/feather&type=Date" />
- </picture>
-</a>
 
 ## Acknowledgements
 
