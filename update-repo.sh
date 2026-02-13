@@ -6,35 +6,12 @@ handle_error() {
   exit 1
 }
 
-REPO="${RELEASE_REPO:-${GITHUB_REPOSITORY:-whosnipedmyass/FeatherPro}}"
-
-echo "Fetching latest release data from GitHub for repo: $REPO..."
-
-# Use Accept header and optional auth to avoid rate limits and access private repos
-if [ -n "$GITHUB_TOKEN" ]; then
-  release_info=$(curl -s -H "Accept: application/vnd.github.v3+json" -H "Authorization: token $GITHUB_TOKEN" "https://api.github.com/repos/${REPO}/releases/latest")
-else
-  release_info=$(curl -s -H "Accept: application/vnd.github.v3+json" "https://api.github.com/repos/${REPO}/releases/latest")
-fi
-
-# quick sanity check: ensure we have JSON (not HTML or an error page)
-if ! echo "$release_info" | jq . >/dev/null 2>&1; then
-  echo "Error: received non-JSON response from GitHub API (possible rate limit or auth error)."
-  echo "Response excerpt:" 
-  echo "$release_info" | sed -n '1,40p'
-  exit 1
-fi
-
+echo "Fetching latest release data from GitHub..."
+release_info=$(curl -s https://api.github.com/repos/whosnipedmyass/FeatherPro/releases/latest)
 clean_release_info=$(echo "$release_info" | tr -d '\000-\037')
 
-# only strip a leading "v" if present
-version=$(echo "$clean_release_info" | jq -r '.tag_name // empty | if startswith("v") then .[1:] else . end')
 updated_at=$(echo "$clean_release_info" | jq -r '.published_at // .created_at // empty')
-
-# fallback if version is empty
-if [ -z "$version" ]; then
-  version=""
-fi
+version=$(echo "$clean_release_info" | jq -r '.tag_name | .[1:] // empty')
 
 echo "Release version: $version"
 echo "Updated at: $updated_at"
@@ -56,15 +33,9 @@ if [ "$(echo "$ipa_files" | jq 'length')" -gt 0 ]; then
     
     cp "$JSON_FILE" "${JSON_FILE}.tmp"
     
-    num_apps=$(jq '.apps | length // 0' "$JSON_FILE")
+    num_apps=$(jq '.apps | length' "$JSON_FILE")
     echo "Repository has $num_apps apps"
     
-    # If there are zero apps, do nothing
-    if [ "$num_apps" -le 0 ]; then
-      echo "No apps to update in $JSON_FILE"
-      exit 0
-    fi
-
     for app_index in $(seq 0 $(($num_apps - 1))); do
         app_name=$(jq -r ".apps[$app_index].name" "$JSON_FILE")
         app_id=$(jq -r ".apps[$app_index].bundleIdentifier" "$JSON_FILE")
